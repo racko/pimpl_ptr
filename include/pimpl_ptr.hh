@@ -6,18 +6,18 @@
 #include <memory>
 
 namespace detail {
-  template <std::size_t Size, int Align>
+  template <std::size_t Size, std::size_t Align>
   struct aligned_storage {
     typedef typename std::aligned_storage<Size, Align>::type type;
   };
 
   template <std::size_t Size>
-  struct aligned_storage<Size, -1> {
+  struct aligned_storage<Size, -1ULL> {
     typedef typename std::aligned_storage<Size>::type type;
   };
 }
 
-template <typename T, std::size_t Size, int Align=-1>
+template <typename T, std::size_t Size, std::size_t Align=-1ULL>
 class pimpl_ptr {
   typename detail::aligned_storage<Size, Align>::type data;
 
