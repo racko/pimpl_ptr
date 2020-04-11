@@ -4,7 +4,6 @@
 #include <type_traits>
 #include <utility>
 #include <memory>
-#include <iostream>
 
 namespace detail {
   template <std::size_t Size, int Align>
